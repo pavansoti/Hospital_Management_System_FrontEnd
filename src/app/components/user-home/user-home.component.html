@@ -1,0 +1,59 @@
+<body>
+    <div style="background-color: white
+    ;">
+      <ul class="nav justify-content-end ">
+        <li class="nav-item ">
+          <a class="nav-link " *ngIf="action!='about'" href="/user/{{username}}"><h2 class="name">Welcome {{username|titlecase}}</h2></a>
+          <a class="nav-link "*ngIf="action=='about'" href="/user/{{username}}"><h2 class="name">My Health Care</h2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/{{username}}/view">My appointments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/{{username}}/book">Book appointment</a>
+        </li>
+        <li class="nav-item dropdown"  *ngIf="action=='book'" >
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Filter
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div *ngFor="let specialization of specializations">
+              <a class="dropdown-item hoverFilter" href="/user/{{username}}/book/{{specialization}}" >{{specialization|titlecase}}</a>
+            </div> 
+            <a class="dropdown-item hoverDanger" href="/user/{{username}}/book" >Remove</a>        
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/{{username}}/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/{{username}}/feedback">Feedback</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Others
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <a class="dropdown-item hoverPrimary" href="/user/{{username}}/change">Change password</a>
+            <a class="dropdown-item hoverDanger" href="/">Logout</a>          
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="action==null" style="padding-left: 150px;padding-right: 150px;margin-top:70px">
+      <ngb-carousel interval="2000">
+        <ng-template ngbSlide  *ngFor="let image of images">
+          <div style="text-align: center;">
+            <img src="/assets/{{image.name}}" width="700" height="350" [alt]="image.caption">
+            <div class="carousel-caption">{{image.caption}}</div>
+          </div>
+        </ng-template>
+      </ngb-carousel> 
+    </div>
+    <app-all-appointments *ngIf="action=='view'"></app-all-appointments>
+    <app-book-appointment *ngIf="action=='book'"></app-book-appointment>
+    <app-about *ngIf="action=='about'"></app-about>
+    <app-feedback *ngIf="action=='feedback'"></app-feedback>
+    <app-change-password *ngIf="action=='change'"></app-change-password>
+  </body>
+  

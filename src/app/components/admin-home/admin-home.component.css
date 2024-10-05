@@ -1,0 +1,26 @@
+ul{
+    padding-left: 30px;
+    padding-right:30px
+}
+ul li:first-child{
+    position: absolute;
+    left:30px
+}
+.hoverDoctor:hover{
+    background-color: rgb(182, 114, 246);
+}
+.hoverAdmin:hover{
+    background-color:rgb(254, 186, 249)
+}
+.hoverAppointment:hover{
+    background-color:rgb(170, 245, 218)
+}
+.hoverFilter:hover{
+    background-color: rgb(246, 244, 136);
+}
+.hoverDanger:hover{
+    background-color: rgb(235, 145, 145);
+}
+.hoverPrimary:hover{
+    background-color: rgb(136, 140, 244);
+}

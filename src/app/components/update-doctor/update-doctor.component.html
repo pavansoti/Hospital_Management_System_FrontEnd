@@ -1,0 +1,60 @@
+<h1 class="my"><span class="name">My Health Care</span></h1>
+<h1 style="text-align: center;color: white;">Edit Doctor Details Here</h1>
+<div class="container" >
+    <form class="col row form-group" [formGroup]="editDoctorForm" (ngSubmit)="submit()" >
+        <div class="col-6" >
+            <div>
+                <label for="name" >Doctor ID</label>
+                <input type="text" class="form-control" value="{{id}}" disabled>
+            </div>
+            <div>
+                <label for="name" class="mt-3" >Fullname</label>
+                <input type="text" class="form-control" [class.is-invalid]="name.invalid"  formControlName="name" placeholder="Enter Fullname" >
+                <div>
+                    <small class="text-danger" *ngIf="name.errors?.pattern">Invalid name format</small>
+                </div>
+            </div>
+            <div>
+                <label for="email" class="mt-3">Email address</label>
+                <input type="email" class="form-control" formControlName="email" [class.is-invalid]="email.invalid"  placeholder="Enter email">
+                <div>
+                    <small class="text-danger" *ngIf="email.errors?.pattern">Invalid email format</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contact" class="mt-3">Mobile</label>
+                <input type="tel" class="form-control" [class.is-invalid]="mobile.invalid" formControlName="contact"  placeholder="Enter mobile">
+                <div>
+                    <small class="text-danger" *ngIf="mobile.errors?.pattern">Invalid email format</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="username" >Specialization</label>
+                <input type="text" class="form-control"  formControlName="specialization" placeholder="Enter specialization">
+            </div>
+            <div>
+                <label class="mt-3">Experience</label>
+                <input type="number" class="form-control" [class.is-invalid]="(experience.errors?.min || experience.errors?.max)&& experience.dirty " formControlName="experience"  placeholder="Experience">
+                <div>
+                    <small class="text-danger" *ngIf="experience.errors?.min || experience.errors?.max">Please enter experience between 1 - 30</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="mt-3">Date of Birth</label>
+                <input type="date" class="form-control" formControlName="dob" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="address" class="mt-3">Address</label>
+                <input type="text" class="form-control" formControlName="address" placeholder="Enter address">
+            </div>
+        </div>
+        <div class="mt-3" style="text-align: center;">
+            <input type="submit" class="btn btn-primary" style="margin-right: 10px;padding-right: 15px;padding-left: 15px;" value="Done">
+            <button class="btn btn-success" style="margin-right: 10px;padding-right: 15px;padding-left: 15px;" routerLink="/admin/{{username}}/view_doctor">Back</button>
+            <input type="reset" class="btn btn-danger reset" style="padding-right: 15px;padding-left: 15px;" value="Reset">
+            
+        </div>
+    </form>
+</div>

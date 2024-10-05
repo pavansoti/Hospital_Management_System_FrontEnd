@@ -1,0 +1,10 @@
+<body>
+    <form class="form-group" [formGroup]="deleteForm" (ngSubmit)="deleteSubmit()">
+        <h1 class="my" style="padding-top: 60px;"><span class="name">My Health Care</span></h1>
+            <table>
+                <tr><th style="padding-top:10px;font-size: large;">Delete Admin</th></tr>
+                <tr><td style="padding-left: 10px;padding-right:10px"><input class="font form-control mt-2" type="text" name="id" size="25" formControlName="id" placeholder="Enter username or email"></td></tr>
+                <tr><td><input class="btn btn-danger mt-3 mb-3" type="submit" value="Delete"></td></tr>
+            </table>
+    </form>
+</body>

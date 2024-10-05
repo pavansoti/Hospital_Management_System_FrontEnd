@@ -1,0 +1,43 @@
+<div *ngIf="day!='custom'||day=='customEnd'">
+  <h1 class="my"><span class="name">All Appointments</span></h1>
+  <div class="container-fluid">
+      <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th style="padding-left:30px ;">App. Id</th>
+              <th>Patient Name</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Mobile</th>
+              <th>App. Date</th>
+              <th>Doctor Id</th>
+              <th>Address</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let appointment of appointments">
+              <td style="padding-left:30px ;">{{appointment.id}}</td>
+              <td>{{appointment.name}}</td>
+              <td>{{appointment.gender}}</td>
+              <td>{{appointment.age}}</td>
+              <td>{{appointment.mobile}}</td>
+              <td>{{appointment.appointmentDate}}</td>
+              <td>{{appointment.doctorId.id}}</td>
+              <td>{{appointment.address}}</td>
+              <td>{{appointment.status}}</td>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+<div *ngIf="day=='custom'">
+  <form class="form-group" #dateSearch="ngForm" (ngSubmit)="submit(dateSearch)">
+    <h1 class="my"><span class="name">My Health Care</span></h1>
+        <table>
+            <tr><th style="padding-top:10px;font-size: large;">Enter Date</th></tr>
+            <tr><td style="padding-left: 10px;padding-right:10px"><input class="font form-control mt-4" name="date" [(ngModel)]="search.date" type="date"  required></td></tr>
+            <tr><td><input class="btn btn-primary" type="submit" value="Search" style="margin-top:10px;margin-bottom: 30px;"></td></tr>
+        </table>
+</form>
+</div>

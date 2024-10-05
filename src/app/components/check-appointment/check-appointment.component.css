@@ -1,0 +1,28 @@
+
+body{
+    
+    background-size: cover;
+    background-attachment: fixed;
+}
+table{
+    margin:auto;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    box-shadow:10px 10px 20px rgba(0, 0, 0, 1);
+}
+input[type="submit"]{
+    padding:5px 69px;
+    border-radius:5px;
+}
+.font{
+    font-family:Arial, Helvetica, sans-serif;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}

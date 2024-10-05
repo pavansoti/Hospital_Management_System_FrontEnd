@@ -1,0 +1,75 @@
+<body>
+    <div style="background-color: white;">
+      <ul class="nav justify-content-end ">
+        <li class="nav-item ">
+          <a class="nav-link " href="/admin/{{username}}"><h2 class="name">Welcome {{username|titlecase}}</h2></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Doctor
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item hoverDoctor" href="/admin/{{username}}/add_doctor">Add doctor</a>
+            <a class="dropdown-item hoverDoctor" href="/admin/{{username}}/view_doctor">View doctors</a>           
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Appointment
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item hoverAppointment" href="/admin/{{username}}/view_appointment">View appoinments</a>
+            <a class="dropdown-item hoverAppointment" href="/admin/{{username}}/check_appointment">Check appointment</a>          
+          </div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="action=='view_appointment'">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Appointments by date
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <a class="dropdown-item hoverFilter" href="/admin/{{username}}/view_appointment/today">Today</a>
+            <a class="dropdown-item hoverFilter" href="/admin/{{username}}/view_appointment/tomorrow">Tomorrow</a>
+            <a class="dropdown-item hoverFilter" href="/admin/{{username}}/view_appointment/yesterday">Yesterday</a>
+            <a class="dropdown-item hoverFilter" href="/admin/{{username}}/view_appointment/custom">Custom</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="username=='admin'">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item hoverAdmin" href="/admin/{{username}}/add_admin">Add admin</a>
+            <a class="dropdown-item hoverAdmin" href="/admin/{{username}}/delete_admin">Delete admin</a>           
+          </div>
+        </li>
+        <li class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Others
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+            <a class="dropdown-item hoverPrimary" href="/admin/{{username}}/change">Change password</a>
+            <a class="dropdown-item hoverDanger"  href="/">Logout</a>         
+          </div>
+        </li>
+      </ul>  
+    </div>
+    <div *ngIf="action==null" style="padding-left: 150px;padding-right: 150px;margin-top: 70px;">
+      <ngb-carousel interval="2000">
+        <ng-template ngbSlide  *ngFor="let image of images">
+          <div style="text-align: center;">
+            <img src="/assets/{{image.name}}" width="700" height="350" [alt]="image.caption">
+            <div class="carousel-caption">{{image.caption}}</div>
+          </div>
+        </ng-template>
+      </ngb-carousel> 
+    </div>
+    <app-add-doctor *ngIf="action=='add_doctor'"></app-add-doctor>
+    <app-view-doctor *ngIf="action=='view_doctor'"></app-view-doctor>
+    <app-view-appointment *ngIf="action=='view_appointment'"></app-view-appointment>
+    <app-check-appointment *ngIf="action=='check_appointment'"></app-check-appointment>
+    <app-delete-admin *ngIf="action=='delete_admin'"></app-delete-admin>
+    <app-add-admin *ngIf="action=='add_admin'"></app-add-admin>
+    <app-admin-password-change *ngIf="action=='change'"></app-admin-password-change>
+  </body>
+
+	

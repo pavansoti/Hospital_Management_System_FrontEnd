@@ -1,0 +1,20 @@
+<body>
+    <form class="form-group" [formGroup]="loginForm" (ngSubmit)="submit()">
+        <h1 class="my" style="padding-top: 60px;"><a href="/" style="text-decoration: none;"><span class="name">My Health Care</span></a></h1>
+            <table>
+                <tr><th style="padding-top:10px;font-size: large;">Login</th></tr>
+                <tr><td style="padding-left: 10px;padding-right: 10px;">
+                    <select class="form-select mt-2" name="type" formControlName="type">
+                        <optgroup label="select type">
+                            <option value="admins">admin</option>
+                            <option value="users" [selected]='true'>user</option>
+                        </optgroup>
+                    </select>
+                </td></tr>
+                <tr><td style="padding-left: 10px;padding-right:10px"><input class="font form-control mt-2" type="text" name="username" formControlName="username" placeholder="username"></td></tr>
+                <tr><td style="padding-left: 10px;padding-right:10px"><input class="font form-control mt-2" type="password" name="password" formControlName="password" placeholder="password"></td></tr>
+                <tr><td><input class="btn btn-primary mt-3 mb-3" type="submit" value="login"></td></tr>
+                <tr *ngIf="loginForm.get('type').value=='users'"><td><pre style="font-size:12px;padding:5px"><a href="/forget_password" class="font">Forgotten account?</a> <a class="font" href="/register">Register</a></pre></td></tr>
+            </table>
+    </form>
+</body>

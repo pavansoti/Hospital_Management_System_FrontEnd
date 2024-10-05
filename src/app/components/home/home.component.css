@@ -1,0 +1,9 @@
+
+ul{
+    padding-left: 30px;
+    padding-right:30px
+}
+ul li:first-child{
+    position: absolute;
+    left:30px
+}

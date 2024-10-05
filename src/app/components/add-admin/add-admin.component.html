@@ -1,0 +1,30 @@
+<body>
+<form class="form-group" [formGroup]="adminForm" (ngSubmit)="submit()">
+    <h1 class="my"><span class="name">My Health Care</span></h1>
+        <table>
+            <tr><th style="padding-top:10px;font-size: large;">Admin Register</th></tr>
+            <tr><td style="padding-left: 10px;padding-right:10px"><input class="font form-control mt-2" [class.is-invalid]="(usernameAdmin.dirty||usernameAdmin.touched)&& usernameAdmin.invalid" type="text" name="username" formControlName="username" placeholder="username"></td></tr>
+            <tr><td><div *ngIf="usernameAdmin.invalid&&(usernameAdmin.dirty||usernameAdmin.touched)">
+                <small class="text-danger" *ngIf="usernameAdmin.errors?.required">This field is required</small><br *ngIf="usernameAdmin.errors?.minlength">
+                <small class="text-danger" *ngIf="usernameAdmin.errors?.minlength">Username must be atleast 4 characters</small><br *ngIf="usernameCheckStart">
+                <small class="text-danger" *ngIf="usernameCheckStart">Username must starts with Character</small><br *ngIf="usernameCheckSpace">
+                <small class="text-danger" *ngIf="usernameCheckSpace">Username must not contains spaces</small>
+            </div></td></tr>
+            <tr><td style="padding-left: 10px;padding-right:10px"><input class="font form-control mt-2" [class.is-invalid]="(email.dirty||email.touched)&& email.invalid" type="email" name="email" formControlName="email" placeholder="email"></td></tr>
+            <tr><td><div *ngIf="email.dirty||email.touched">
+                <small class="text-danger" *ngIf="email.errors?.required">This field is required</small>
+                <small class="text-danger" *ngIf="email.errors?.pattern">Invalid email format</small>
+            </div></td></tr>
+            <tr><td style="padding-left: 10px;padding-right:10px"><input class="font form-control mt-2" [class.is-invalid]="(password.dirty||password.touched)&& password.invalid" type="password" name="password" formControlName="password" placeholder="password"></td></tr>
+            <tr><td> <div *ngIf="password.dirty||password.touched">
+                <small class="text-danger" *ngIf="password.errors?.required">This field is required</small>
+                <small class="text-danger" *ngIf="password.errors?.minlength">Password must be atlest 8 characters</small>
+            </div></td></tr>
+            <tr><td style="padding-left: 10px;padding-right:10px"><input class="font form-control mt-2"  [class.is-invalid]="(password.value!=confirmPassword.value)&&confirmPassword.dirty" type="password" name="password" formControlName="confirmPassword" placeholder="confirm password"></td></tr>
+            <tr><td> <div *ngIf="confirmPassword.dirty">
+                <small class="text-danger" *ngIf="password.value!=confirmPassword.value">Password not matched</small>
+            </div></td></tr>
+            <tr><td><input class="btn btn-primary" type="submit" value="Register" style="margin-top:8px; margin-bottom: 20px;"></td></tr>
+        </table>
+</form>
+</body>

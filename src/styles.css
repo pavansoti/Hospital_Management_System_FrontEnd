@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-image:url("/assets/hospitalBackground.jpg") ;
+    background-size: cover;
+    background-repeat: repeat-y;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.name{
+    color:rgb(233, 132, 49);
+    font-weight: bold;
+    text-shadow: 2px 4px 4px darkgrey;
+}
+.my{
+    text-align: center;
+    font-size: xx-large;
+    padding-top: 30px;
+}

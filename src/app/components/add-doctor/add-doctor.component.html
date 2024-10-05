@@ -1,0 +1,68 @@
+
+    <h1 class="my"><span class="name">My Health Care</span></h1>
+    <h1 style="text-align: center;color: white;">Fill Doctor Details Here</h1>
+    <div class="container" >
+        <form class="col row form-group" [formGroup]="doctorForm" (ngSubmit)="submit()" >
+            <div class="col-6" >
+                <div>
+                    <label for="name" >Fullname</label>
+                    <input type="text" class="form-control" [class.is-invalid]="name.invalid&&(name.dirty||name.touched)" formControlName="name" placeholder="Enter Fullname">
+                    <div *ngIf="name.invalid&&(name.dirty||name.touched)">
+                        <small class="text-danger" *ngIf="name.errors?.required">This field is required</small>
+                        <small class="text-danger" *ngIf="name.errors?.pattern">Invalid name format</small>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="mt-3">Email address</label>
+                    <input type="email" class="form-control" [class.is-invalid]="(email.dirty||email.touched)&& email.invalid" formControlName="email"  placeholder="Enter email">
+                    <div *ngIf="email.invalid&&(email.dirty||email.touched)">
+                        <small class="text-danger" *ngIf="email.errors?.required">This field is required</small>
+                        <small class="text-danger" *ngIf="email.errors?.pattern">Invalid email format</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact" class="mt-3">Mobile</label>
+                    <input type="tel" class="form-control" [class.is-invalid]="mobile.invalid&&(mobile.dirty||mobile.touched)"  formControlName="contact"  placeholder="Enter mobile">
+                    <div *ngIf="mobile.invalid&&(mobile.dirty||mobile.touched)">
+                        <small class="text-danger" *ngIf="mobile.errors?.required">This field is required</small>
+                        <small class="text-danger" *ngIf="mobile.errors?.pattern">Please enter valid mobile number</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="mt-3">Address</label>
+                    <input type="text" class="form-control" [class.is-invalid]="address.invalid&&(address.dirty||address.touched)" formControlName="address"  placeholder="Enter address">
+                    <div *ngIf="address.invalid&&(address.dirty||address.touched)">
+                        <small class="text-danger" *ngIf="address.errors?.required">This field is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="username" >Specialization</label>
+                    <input type="text" class="form-control" [class.is-invalid]="specialization.invalid&&(specialization.dirty||specialization.touched)" formControlName="specialization" placeholder="Enter specialization">
+                    <div *ngIf="specialization.invalid&&(specialization.dirty||specialization.touched)">
+                        <small class="text-danger" *ngIf="specialization.errors?.required">This field is required</small>
+                    </div>
+                </div>
+                <div>
+                    <label class="mt-3">Experience</label>
+                    <input type="number" class="form-control" [class.is-invalid]="experience.invalid&&(experience.dirty||experience.touched)" formControlName="experience"  placeholder="Experience">
+                    <div *ngIf="experience.invalid&&(experience.dirty||experience.touched)">
+                        <small class="text-danger" *ngIf="experience.errors?.required">This field is required</small>
+                        <small class="text-danger" *ngIf="experience.errors?.min || experience.errors?.max">Please enter experience between 1 - 30</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="mt-3">Date of Birth</label>
+                    <input type="date" class="form-control" [class.is-invalid]="dob.invalid && (dob.dirty||dob.touched)" formControlName="dob"  placeholder="Password">
+                    <div *ngIf="dob.invalid && (dob.dirty||dob.touched)">
+                        <small class="text-danger" *ngIf="dob.errors?.required">This field is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3" style="text-align: center;">
+                <input type="submit" class="btn btn-success" style="margin-right: 10px" value="Register">
+                <input type="reset" class="btn btn-danger reset" style="padding-right: 15px;padding-left: 15px;" value="Reset">
+            </div>
+        </form>
+    </div>

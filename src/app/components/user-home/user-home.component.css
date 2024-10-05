@@ -1,0 +1,17 @@
+ul{
+    padding-left: 30px;
+    padding-right:30px
+}
+ul li:first-child{
+    position: absolute;
+    left:30px
+}
+.hoverFilter:hover{
+    background-color: rgb(182, 114, 246);
+}
+.hoverDanger:hover{
+    background-color: rgb(235, 145, 145);
+}
+.hoverPrimary:hover{
+    background-color: rgb(136, 140, 244);
+}

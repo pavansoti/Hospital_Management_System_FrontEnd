@@ -1,0 +1,53 @@
+
+<h1 class="my"><span class="name">My Health Care</span></h1>
+<h1 style="text-align: center;color: white;">Feedback Form</h1>
+<div class="container" >
+    <form class="col row form-group" [formGroup]="feedbackForm" (ngSubmit)="submit()" >
+        <div class="col-6" >
+            <div class="form-group">
+                 <label for="name" >Username</label>
+                <input type="text" class="form-control" value="{{username}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="email" class="mt-3">Email address</label>
+                <input type="email" class="form-control" value="{{email}}"  disabled>
+            </div>
+            <div class="form-group">
+                <label for="type" class="mt-3">Select feedback type</label>
+                <select class="form-select" name="type" formControlName="type" [class.is-invalid]="type.invalid&&(type.dirty||type.touched)">
+                    <optgroup label="select type">
+                        <option value="app review">App review</option>
+                        <option value="appointment cancellation">Appointment cancellation</option>
+                        <option value="appointment fix">Appointment fix</option>
+                        <option value="bug report">Bug report</option>
+                        <option value="my appointments">My appointments</option>
+                        <option value="others">Others</option>
+                    </optgroup>
+                </select>
+                <div *ngIf="type.invalid&&(type.dirty||type.touched)">
+                    <small class="text-danger" *ngIf="type.errors?.required">This field is required</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="subject" class="mt-3">Subject</label>
+                <input type="text" class="form-control" formControlName="subject" [class.is-invalid]="(subject.dirty||subject.touched)&& subject.invalid"  placeholder="Enter subject">
+                <div *ngIf="subject.invalid&&(subject.dirty||subject.touched)">
+                    <small class="text-danger" *ngIf="subject.errors?.required">This field is required</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="description" >Description</label>
+                <div *ngIf="description.invalid&&(description.dirty||description.touched)">
+                    <small class="text-danger" *ngIf="description.errors?.required">This field is required</small>            
+                </div>
+                <textarea class="form-control" formControlName="description" [class.is-invalid]="(description.dirty||description.touched)&& description.invalid" rows="10" style="resize: none;" placeholder="Enter description"></textarea>
+            </div>
+        </div>
+        <div class="mt-3" style="text-align: center;">
+            <input type="submit" class="btn btn-success" style="margin-right: 10px" value="Submit">
+            <input type="reset" class="btn btn-danger reset" style="padding-right: 15px;padding-left: 15px;" value="Reset">
+        </div>
+    </form>
+</div>
